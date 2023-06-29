@@ -87,13 +87,13 @@ variable "ports" {
 }
 
 variable "env_vars" {
-  description = ""
-  type = list(object({
-    key   = string
-    value = string
-  }))
-  default = []
+  description = "Environment variables for the job"
+  type        = map(string)
+  default     = {}
 }
+
+
+
 
 variable "consul_service_name" {
   description = "The consul service name for the application"
