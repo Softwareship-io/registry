@@ -88,10 +88,16 @@ variable "ports" {
 
 variable "env_vars" {
   description = "Environment variables for the job"
-  type        = map(string)
-  default     = {}
-}
-
+  type = list(object({
+    key   = string
+    value = string
+  }))
+  default     = [
+    {key = "DATABASE_TYPE", value = "sqlite3"},
+    {key = "BROKER_TYPE", value = "redis"}
+  ]
+    
+  }
 
 
 
