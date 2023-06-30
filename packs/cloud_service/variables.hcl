@@ -96,7 +96,6 @@ variable "env_vars" {
 }
 
 
-
 variable "consul_service_name" {
   description = "The consul service name for the application"
   type        = string
