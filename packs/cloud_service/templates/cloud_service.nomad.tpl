@@ -60,11 +60,11 @@ task "server" {
     ports = ["http"]
   }
 
-   env {
-        [[- range $var := .cloud_service.env_vars ]]
-        [[ $var.key ]] = "[[ $var.value ]]"
-        [[- end ]]
-      }
+  env {
+    [[- range $var := .cloud_service.env_vars ]]
+    [[ $var.key ]] = "[[ $var.value ]]"
+    [[- end ]]
+  }
 
 
 
