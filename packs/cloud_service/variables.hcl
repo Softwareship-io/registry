@@ -17,7 +17,7 @@ variable "region" {
 variable "datacenters" {
   description = "A list of datacenters in the region which are eligible for task placement"
   type        = list(string)
-  default     = ["dc1"]
+  default     = ["ng1"]
 }
 
 variable "image" {
@@ -41,7 +41,7 @@ variable "restart_attempts" {
 variable "has_health_check" {
   description = "If you want to register a health check in consul"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "health_check" {
@@ -55,7 +55,7 @@ variable "health_check" {
   default = {
     path = "/"
     interval = "10s"
-    timeout  = "2s"
+    timeout  = "5s"
   }
 }
 
@@ -70,7 +70,7 @@ type = list(object({
 variable "register_consul_service" {
   description = "If you want to register a consul service for the job"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "ports" {
@@ -122,7 +122,7 @@ variable "resources" {
   })
   default = {
     cpu    = 200,
-    memory = 256
+    memory = 200
   }
 }
 
