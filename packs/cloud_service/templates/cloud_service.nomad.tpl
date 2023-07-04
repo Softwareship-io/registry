@@ -3,6 +3,15 @@ job [[ template "job_name" . ]] {
 datacenters = [[ .cloud_service.datacenters | toStringList ]]
 type        = "service"
 
+update {
+  max_parallel     = 2
+  min_healthy_time = "5s"
+  healthy_deadline = "120s"
+  auto_revert      = true
+  auto_promote     = true
+  canary           = 1
+}
+
 group "app" {
   count = [[ .cloud_service.count ]]
 
@@ -47,9 +56,9 @@ service {
 
 restart {
   attempts = [[ .cloud_service.restart_attempts ]]
-  interval = "30m"
+  interval = "10m"
   delay    = "15s"
-  mode     = "fail"
+  mode     = [[ .cloud_service.restart_mode| quote ]]
 }
 
 task "server" {

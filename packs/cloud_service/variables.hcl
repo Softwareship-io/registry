@@ -38,6 +38,12 @@ variable "restart_attempts" {
   default     = 2
 }
 
+variable "restart_mode" {
+  description = "The number of times the task should restart on updates"
+  type        = string
+  default     = "fail"
+}
+
 variable "has_health_check" {
   description = "If you want to register a health check in consul"
   type        = bool
