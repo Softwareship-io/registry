@@ -66,6 +66,7 @@ task "server" {
 
   config {
     image = [[.cloud_service.image | quote]]
+    entrypoint = [[ .cloud_service.entrypoint | toStringList ]]
     ports = ["http"]
   }
 
