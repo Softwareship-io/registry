@@ -27,10 +27,17 @@ variable "image" {
 }
 
 variable "entrypoint" {
+  description = "list of entrypoint commands to run in the container"
+  type        = list(string)
+  default     = []
+}
+
+variable "args" {
   description = "list of commands to run in the container"
   type        = list(string)
   default     = []
 }
+
 
 variable "count" {
   description = "The number of app instances to deploy"
