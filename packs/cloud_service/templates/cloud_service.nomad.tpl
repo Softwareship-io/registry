@@ -66,7 +66,6 @@ task "server" {
 
   config {
     image = [[.cloud_service.image | quote]]
-    //ports = ["http"]
   }
 
   [[- $env_vars_length := len .cloud_service.env_vars ]]
