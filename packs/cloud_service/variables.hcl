@@ -124,7 +124,7 @@ variable "consul_service_name" {
 variable "consul_service_port" {
   description = "The consul service name for the application"
   type        = string
-  default     = ""
+  default     = "http"
 }
 
 variable "consul_tags" {
