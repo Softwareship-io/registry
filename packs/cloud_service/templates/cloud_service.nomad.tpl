@@ -66,15 +66,6 @@ task "server" {
 
   config {
     image = [[.cloud_service.image | quote]]
-    [[- $args_length := len .cloud_service.args ]]
-    [[- if not (eq $args_length 0) ]]
-    command = "sh"
-    args = [
-    [[- range $arg := .cloud_service.args ]]
-    [[ $arg | quote ]],
-    [[- end ]]
-    ]
-    [[- end ]]
   }
 
   [[- $env_vars_length := len .cloud_service.env_vars ]]
