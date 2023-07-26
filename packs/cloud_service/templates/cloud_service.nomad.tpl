@@ -29,7 +29,7 @@ service {
   name = "[[ .cloud_service.consul_service_name ]]"
   port = "[[ .cloud_service.consul_service_port ]]"
   tags = [[ .cloud_service.consul_tags | toStringList ]]
-  canary_tags = [ "canary" ]
+  canary_tags = [ "green" ]
   [[- if .cloud_service.upstreams ]]
   connect {
     sidecar_service {

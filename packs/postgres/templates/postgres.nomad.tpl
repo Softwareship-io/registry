@@ -26,7 +26,7 @@ service {
   name = [[ .my.consul_service_name | quote ]]
   port = [[ .my.consul_service_port | quote ]]
   tags = [ [[ range $idx, $tag := .my.consul_tags ]][[if $idx]],[[end]][[ $tag | quote ]][[ end ]] ]
-  canary_tags = [ "canary" ]
+  canary_tags = [ "green" ]
 
    [[- if .my.upstreams ]]
   connect {

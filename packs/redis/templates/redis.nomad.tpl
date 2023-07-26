@@ -35,7 +35,7 @@ job [[ template "job_name" . ]] {
       name = [[ .my.consul_service_name | quote ]]
       port = [[ .my.consul_service_port | quote ]]
       tags = [[ .my.consul_tags | toStringList ]]
-      canary_tags = [ "canary" ]
+      canary_tags = [ "green" ]
 
 
 
