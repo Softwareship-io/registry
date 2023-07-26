@@ -36,9 +36,6 @@ job [[ template "job_name" . ]] {
       port = [[ .my.consul_service_port | quote ]]
       tags = [[ .my.consul_tags | toStringList ]]
 
-      connect {
-        sidecar_service {}
-      }
 
       [[- if .my.has_health_check ]]
       check {

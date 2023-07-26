@@ -70,7 +70,7 @@ variable "consul_service_name" {
 variable "consul_service_port" {
   description = "Port used by Consul, if registering the job in Consul"
   type        = string
-  default     = "6379"
+  default     = "5432"
 }
 
 variable "consul_tags" {
@@ -94,7 +94,7 @@ variable "network" {
     mode = "bridge"
     ports = [{
       name = "db"
-      port = 6379
+      port = 5432
     }]
   }
 }
@@ -105,6 +105,14 @@ variable "has_health_check" {
   default     = false
 }
 
+variable "upstreams" {
+description = ""
+type = list(object({
+  name   = string
+  port = string
+  }))
+}
+
 variable "health_check" {
   description = "Consul health check details"
   type = object({
@@ -113,7 +121,7 @@ variable "health_check" {
     timeout  = string
   })
   default = {
-    port     = "6379"
+    port     = "5432"
     interval = "10s"
     timeout  = "2s"
   }
@@ -129,13 +137,13 @@ variable "restart_attempts" {
 variable "image" {
   description = "postgres Docker image."
   type        = string
-  default     = "bitnami/postgresql:13.4.0-debian-10-r77"
+  default     = "postgres:14"
 }
 
 variable "volume_path" {
   description = "The volume's absolute path in the host to be used by PostgreSQL."
   type        = string
-  default     = "/var/lib/postgres/postgresql"
+  default     = "/srv/postgres/data/pgdata"
 }
 variable "env_vars" {
   description = "PostgreSQL's environment variables."
@@ -149,16 +157,20 @@ variable "env_vars" {
       value = "no"
     },
     {
-      key   = "POSTGRESQL_USERNAME"
+      key   = "POSTGRES_USER"
       value = "postgres_user"
     },
     {
-      key   = "POSTGRESQL_PASSWORD"
+      key   = "POSTGRES_PASSWORD"
       value = "postgres_user_password"
     },
     {
-      key   = "POSTGRESQL_DATABASE"
+      key   = "POSTGRES_DB"
       value = "postgres"
+    },
+    {
+      key   = "PGDATA"
+      value = "/srv/postgres/data/pgdata"
     }
   ]
 }
