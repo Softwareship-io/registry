@@ -12,7 +12,7 @@ update {
   canary           = 1
 }
 
-group "app" {
+group "[[ .cloud_service.consul_service_name ]]" {
   count = [[ .cloud_service.count ]]
 
   network {
@@ -62,7 +62,7 @@ restart {
   mode     = [[ .cloud_service.restart_mode| quote ]]
 }
 
-task "server" {
+task "[[ .cloud_service.consul_service_name ]]" {
   driver = "docker"
 
   config {
