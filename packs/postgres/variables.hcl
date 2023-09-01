@@ -70,7 +70,7 @@ variable "consul_service_name" {
 variable "consul_service_port" {
   description = "Port used by Consul, if registering the job in Consul"
   type        = string
-  default     = "5432"
+  default     = "db"
 }
 
 variable "consul_tags" {
@@ -121,7 +121,7 @@ variable "health_check" {
     timeout  = string
   })
   default = {
-    port     = "5432"
+    port     = "db"
     interval = "10s"
     timeout  = "2s"
   }
