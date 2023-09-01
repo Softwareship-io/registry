@@ -121,7 +121,7 @@ variable "health_check" {
     timeout  = string
   })
   default = {
-    port     = "db"
+    port     = "5432"
     interval = "10s"
     timeout  = "2s"
   }
