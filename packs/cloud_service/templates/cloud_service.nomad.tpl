@@ -67,7 +67,7 @@ task "[[ .cloud_service.consul_service_name ]]" {
 
   config {
     image = [[.cloud_service.image | quote]]
-    args = [[.cloud_service.args | quote ]]
+    args = [[.cloud_service.args | toStringList ]]
   }
 
   [[- $env_vars_length := len .cloud_service.env_vars ]]
