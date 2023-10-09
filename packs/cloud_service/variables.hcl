@@ -74,7 +74,7 @@ variable "health_check" {
   default = {
     path = "/"
     interval = "10s"
-    timeout  = "5s"
+    timeout  = "30s"
   }
 }
 
